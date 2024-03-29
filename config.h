@@ -17,11 +17,12 @@ static const char col_gray1[] = "#181616";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#282727";
 static const char col_gray4[] = "#eeeeee";
-static const char col_purple[] = "#e6c384";
+static const char col_red[] = "#e46876";
+static const char col_gold[] = "#c0a36e";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_purple, col_gray1, col_purple},
+    [SchemeSel] = {col_gold, col_gray1, col_red},
 };
 
 /* tagging */
@@ -92,8 +93,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
-    "dmenu_run", "-m",  dmenumon,   "-fn", dmenufont, "-nb", col_gray1, "-nf",
-    col_gray3,   "-sb", col_purple, "-sf", col_gray4, NULL};
+    "dmenu_run", "-m",      dmenumon, "-fn",   dmenufont, "-nb",     col_gray1,
+    "-nf",       col_gray3, "-sb",    col_red, "-sf",     col_gray4, NULL};
 
 // Spawn terminal
 static const char *termcmd[] = {"kitty", NULL};
