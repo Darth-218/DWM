@@ -156,6 +156,15 @@ static const char *activemss[] = {"flameshot", "screen", NULL};
 // Region screenshot
 static const char *regionss[] = {"flameshot", "gui", NULL};
 
+/* Info controls */
+
+// Show Ram
+static const char *raminfo[] = {"sys-not-ram.sh", NULL};
+// Show Date
+static const char *dateinfo[] = {"sys-not-cal.sh", NULL};
+// Show Uptime
+static const char *upinfo[] = {"sys-not-up.sh", NULL};
+
 /* Include media function keys */
 #include <X11/XF86keysym.h>
 
@@ -304,6 +313,11 @@ static Keychord *keychords[] = {
 
     // "r" Selected region screenshot
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_r}}, spawn, {.v = regionss}}),
+
+    /* Show System Info */
+    &((Keychord){2, {{MODKEY, XK_u}, {0, XK_d}}, spawn, {.v = dateinfo}}),
+    &((Keychord){2, {{MODKEY, XK_u}, {0, XK_r}}, spawn, {.v = raminfo}}),
+    &((Keychord){2, {{MODKEY, XK_u}, {0, XK_u}}, spawn, {.v = upinfo}}),
 
 };
 
