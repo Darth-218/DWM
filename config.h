@@ -18,16 +18,21 @@ static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#282727";
 static const char col_gray4[] = "#eeeeee";
 static const char col_red[] = "#e46876";
+static const char col_softred[] = "#d9a594";
 static const char col_gold[] = "#c0a36e";
+static const char col_pink[] = "#FDD7FE";
+static const char col_orange[] = "#FF9E3B";
+static const char col_blue[] = "#59788e";
+static const char col_darkblue[] = "#0D0C16";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gold, col_gray1, col_red},
+    [SchemeSel] = {col_softred, col_gray1, col_red},
 };
 
 /* tagging */
 static const char *tags[] = {"[1:  ]", "[2: 󰈹 ]", "[3: 󰇰 ]",
-                             "[4:  ]", "[5: 󰎅 ]", "[6:  ]",
+                             "[4:  ]", "[5:  ]",  "[6: 󰎅 ]",
                              "[7: X]",    "[8: Y]",     "[9: Z]"};
 
 static const Rule rules[] = {
@@ -41,8 +46,8 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster = 1;    /* number of clients in master area */
+static const float mfact = 0.5; /* factor of master area size [0.05..0.95] */
+static const int nmaster = 1;   /* number of clients in master area */
 static const int resizehints =
     0; /* 1 means respect size hints in tiled resizals */
 static const int attachbelow =
@@ -193,19 +198,31 @@ static Keychord *keychords[] = {
     /* Increase/Decrease the master window size */
     &((Keychord){1, {{MODKEY, XK_h}}, setmfact, {.f = -0.05}}),
     &((Keychord){1, {{MODKEY, XK_l}}, setmfact, {.f = +0.05}}),
+
+    /* Change master window */
     &((Keychord){1, {{MODKEY, XK_Return}}, zoom, {0}}),
+
+    /* Switch to previous tag */
     &((Keychord){1, {{MODKEY, XK_Tab}}, view, {0}}),
 
+    /* Move current window up */
     &((Keychord){1, {{MODKEY | ShiftMask, XK_j}}, movestack, {.i = +1}}),
+
+    /* Move current window down */
     &((Keychord){1, {{MODKEY | ShiftMask, XK_k}}, movestack, {.i = -1}}),
 
     /* Kill current window */
     &((Keychord){1, {{MODKEY | ShiftMask, XK_c}}, killclient, {0}}),
 
     /* Change layout */
+
+    /* Tiled view */
     &((Keychord){1, {{MODKEY, XK_t}}, setlayout, {.v = &layouts[0]}}),
+    /* Floating view */
     &((Keychord){1, {{MODKEY, XK_f}}, setlayout, {.v = &layouts[1]}}),
+    /* Fullscreen view */
     &((Keychord){1, {{MODKEY, XK_m}}, setlayout, {.v = &layouts[2]}}),
+
     &((Keychord){1, {{MODKEY, XK_space}}, setlayout, {0}}),
     &((Keychord){1, {{MODKEY | ShiftMask, XK_space}}, togglefloating, {0}}),
 
