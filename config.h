@@ -117,6 +117,9 @@ static const char *discordcmd[] = {"discord", NULL};
 /* Launch Thunar */
 static const char *thunarcmd[] = {"thunar", NULL};
 
+/* Launch Okular */
+static const char *okularcmd[] = {"okular", NULL};
+
 /* Rofi Commands */
 
 // Run commands
@@ -285,17 +288,19 @@ static Keychord *keychords[] = {
 
         /* Apps -> super + a */
         // "e" emacs
-        & ((Keychord){
-              2, {{MODKEY, XK_a}, {0, XK_e}}, spawn, {.v = emacsclientcmd}}),
 
-    // "b" Mercury browser
-    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_b}}, spawn, {.v = mercurycmd}}),
+        // "b" Mercury browser
+        &
+        ((Keychord){2, {{MODKEY, XK_a}, {0, XK_b}}, spawn, {.v = mercurycmd}}),
 
     // "d" discord
     &((Keychord){2, {{MODKEY, XK_a}, {0, XK_d}}, spawn, {.v = discordcmd}}),
 
     // "f" thunar
     &((Keychord){2, {{MODKEY, XK_a}, {0, XK_f}}, spawn, {.v = thunarcmd}}),
+
+    // "o" okular
+    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_o}}, spawn, {.v = okularcmd}}),
 
     /* Rofi -> super + r */
     // "d" rofi drun menu
