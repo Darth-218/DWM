@@ -8,7 +8,7 @@ static const unsigned int snap = 32; /* snap pixel */
 static const int showbar = 1;        /* 0 means no bar */
 static const int topbar = 1;         /* 0 means bottom bar */
 static const int horizpadbar = 4;    /* horizontal padding for statusbar */
-static const int vertpadbar = 14;    /* vertical padding for statusbar */
+static const int vertpadbar = 10;    /* vertical padding for statusbar */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 0;        /* horizontal padding of bar */
 static const char *fonts[] = {"JetbrainsMono Nerd Font:bold:size=10"};
@@ -26,8 +26,8 @@ static const char col_blue[] = "#59788e";
 static const char col_darkblue[] = "#0D0C16";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_softred, col_gray1, col_red},
+    [SchemeNorm] = {col_gray2, col_gray1, col_gray2},
+    [SchemeSel] = {col_red, col_gray1, col_red},
 };
 
 /* tagging */
@@ -174,6 +174,13 @@ static const char *dateinfo[] = {"sys-not-cal.sh", NULL};
 // Show Uptime
 static const char *upinfo[] = {"sys-not-up.sh", NULL};
 
+/* Keychord notifications */
+
+// Super + a
+static const char *superanoti[] = {"supera.sh", NULL};
+static const char *superrnoti[] = {"superr.sh", NULL};
+static const char *supersnoti[] = {"supers.sh", NULL};
+
 /* Include media function keys */
 #include <X11/XF86keysym.h>
 
@@ -209,13 +216,13 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{MODKEY, XK_Tab}}, view, {0}}),
 
     /* Move current window up */
-    &((Keychord){1, {{MODKEY | ShiftMask, XK_j}}, movestack, {.i = +1}}),
+    &((Keychord){1, {{MODKEY | ControlMask, XK_j}}, movestack, {.i = +1}}),
 
     /* Move current window down */
-    &((Keychord){1, {{MODKEY | ShiftMask, XK_k}}, movestack, {.i = -1}}),
+    &((Keychord){1, {{MODKEY | ControlMask, XK_k}}, movestack, {.i = -1}}),
 
     /* Kill current window */
-    &((Keychord){1, {{MODKEY | ShiftMask, XK_c}}, killclient, {0}}),
+    &((Keychord){1, {{MODKEY | ShiftMask, XK_x}}, killclient, {0}}),
 
     /* Change layout */
 
@@ -234,8 +241,8 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{MODKEY | ShiftMask, XK_0}}, tag, {.ui = ~0}}),
 
     //
-    &((Keychord){1, {{MODKEY, XK_comma}}, focusmon, {.i = -1}}),
-    &((Keychord){1, {{MODKEY, XK_period}}, focusmon, {.i = +1}}),
+    &((Keychord){1, {{MODKEY | ShiftMask, XK_j}}, focusmon, {.i = -1}}),
+    &((Keychord){1, {{MODKEY | ShiftMask, XK_k}}, focusmon, {.i = +1}}),
     &((Keychord){1, {{MODKEY | ShiftMask, XK_comma}}, tagmon, {.i = -1}}),
     &((Keychord){1, {{MODKEY | ShiftMask, XK_period}}, tagmon, {.i = +1}}),
 
@@ -287,11 +294,11 @@ static Keychord *keychords[] = {
         /* Custom Keychords */
 
         /* Apps -> super + a */
-        // "e" emacs
-
-        // "b" Mercury browser
         &
-        ((Keychord){2, {{MODKEY, XK_a}, {0, XK_b}}, spawn, {.v = mercurycmd}}),
+        ((Keychord){2, {{MODKEY, XK_a}, {0, XK_h}}, spawn, {.v = superanoti}}),
+
+    // "b" Mercury browser
+    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_b}}, spawn, {.v = mercurycmd}}),
 
     // "d" discord
     &((Keychord){2, {{MODKEY, XK_a}, {0, XK_d}}, spawn, {.v = discordcmd}}),
@@ -303,6 +310,8 @@ static Keychord *keychords[] = {
     &((Keychord){2, {{MODKEY, XK_a}, {0, XK_o}}, spawn, {.v = okularcmd}}),
 
     /* Rofi -> super + r */
+    &((Keychord){2, {{MODKEY, XK_r}, {0, XK_h}}, spawn, {.v = superrnoti}}),
+
     // "d" rofi drun menu
     &((Keychord){2, {{MODKEY, XK_r}, {0, XK_d}}, spawn, {.v = rofidruncmd}}),
 
@@ -321,10 +330,12 @@ static Keychord *keychords[] = {
     // "w" rofi wifi menu
     &((Keychord){2, {{MODKEY, XK_r}, {0, XK_w}}, spawn, {.v = rofiwificmd}}),
 
-    // "p" rofi popwer menu
+    // "p" rofi power menu
     &((Keychord){2, {{MODKEY, XK_r}, {0, XK_p}}, spawn, {.v = rofipowercmd}}),
 
     /* Screen -> super + s */
+    &((Keychord){2, {{MODKEY, XK_s}, {0, XK_h}}, spawn, {.v = supersnoti}}),
+
     // "l" Lockscreen bind
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_l}}, spawn, {.v = lockscrn}}),
 
