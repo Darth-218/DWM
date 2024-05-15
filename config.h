@@ -24,10 +24,12 @@ static const char col_pink[] = "#FDD7FE";
 static const char col_orange[] = "#FF9E3B";
 static const char col_blue[] = "#59788e";
 static const char col_darkblue[] = "#0D0C16";
+static const char col_green[] = "#A7D129";
+static const char col_black[] = "#000000";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
-    [SchemeNorm] = {col_gray2, col_gray1, col_gray2},
-    [SchemeSel] = {col_red, col_gray1, col_red},
+    [SchemeNorm] = {col_gray2, col_black, col_gray2},
+    [SchemeSel] = {col_green, col_black, col_green},
 };
 
 /* tagging */
@@ -123,19 +125,50 @@ static const char *okularcmd[] = {"okular", NULL};
 /* Rofi Commands */
 
 // Run commands
-static const char *rofiruncmd[] = {"rofi", "-show", "run", NULL};
+static const char *rofiruncmd[] = {
+    "rofi",
+    "-show",
+    "run",
+    "-theme",
+    "~/.config/rofi/launchers/type-1/style-10.rasi",
+    NULL};
 // Run desktop menu
-static const char *rofidruncmd[] = {"rofi", "-show", "drun", NULL};
+static const char *rofidruncmd[] = {
+    "rofi",
+    "-show",
+    "drun",
+    "-theme",
+    "~/.config/rofi/launchers/type-2/style-14.rasi",
+    NULL};
 // Run calculator
-static const char *roficalccmd[] = {"rofi", "-show", "calc", NULL};
+static const char *roficalccmd[] = {
+    "rofi",
+    "-show",
+    "calc",
+    "-theme",
+    "~/.config/rofi/launchers/type-1/style-9.rasi",
+    NULL};
 // Run file browser
-static const char *rofifilescmd[] = {"rofi", "-show", "filebrowser", NULL};
+static const char *rofifilescmd[] = {
+    "rofi",
+    "-show",
+    "filebrowser",
+    "-theme",
+    "~/.config/rofi/launchers/type-1/style-4.rasi",
+    NULL};
 // Run emoji menu
-static const char *rofiemojicmd[] = {"rofi", "emoji", "-show", "emoji", NULL};
+static const char *rofiemojicmd[] = {
+    "rofi",
+    "-show",
+    "emoji",
+    "-theme",
+    "~/.config/rofi/launchers/type-1/style-3.rasi",
+    NULL};
 // Run wifi menu
 static const char *rofiwificmd[] = {"rofi-wifi", NULL};
 // Run power menu
-static const char *rofipowercmd[] = {"rofi-powermenu", NULL};
+static const char *rofipowercmd[] = {
+    "/home/darth/.config/rofi/powermenu/type-1/powermenu.sh", NULL};
 
 /* Volume control */
 
