@@ -104,7 +104,7 @@ static const char *dmenucmd[] = {
     "-nf",       col_gray3, "-sb",    col_red, "-sf",     col_gray4, NULL};
 
 // Spawn terminal
-static const char *termcmd[] = {"kitty", NULL};
+static const char *termcmd[] = {"alacritty", NULL};
 
 /* Launch Emacs */
 static const char *emacsclientcmd[] = {"emacsclient", "-c", "-a", "emacs",
