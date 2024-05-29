@@ -12,7 +12,7 @@ static const int vertpadbar = 10;    /* vertical padding for statusbar */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 0;        /* horizontal padding of bar */
 static const char *fonts[] = {"JetbrainsMono Nerd Font:bold:size=10"};
-static const char dmenufont[] = "JetbrainsMono Nerd Font:bold:size=13";
+static const char dmenufont[] = "JetbrainsMono Nerd Font:bold:size=11";
 static const char col_gray1[] = "#181616";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#282727";
@@ -20,16 +20,18 @@ static const char col_gray4[] = "#eeeeee";
 static const char col_red[] = "#e46876";
 static const char col_softred[] = "#d9a594";
 static const char col_gold[] = "#c0a36e";
+static const char col_white[] = "#C3C6C4";
 static const char col_pink[] = "#FDD7FE";
 static const char col_orange[] = "#FF9E3B";
 static const char col_blue[] = "#59788e";
 static const char col_darkblue[] = "#0D0C16";
 static const char col_green[] = "#A7D129";
 static const char col_black[] = "#000000";
+static const char col_purple[] = "#ae81ff";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
     [SchemeNorm] = {col_gray2, col_black, col_gray2},
-    [SchemeSel] = {col_orange, col_black, col_orange},
+    [SchemeSel] = {col_purple, col_black, col_red},
 };
 
 /* tagging */
@@ -100,15 +102,11 @@ static const Layout layouts[] = {
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
-    "dmenu_run", "-m",      dmenumon, "-fn",   dmenufont, "-nb",     col_gray1,
-    "-nf",       col_gray3, "-sb",    col_red, "-sf",     col_gray4, NULL};
+    "dmenu_run", "-m",      dmenumon, "-fn",   dmenufont, "-nb",     col_black,
+    "-nf",       col_white, "-sb",    col_red, "-sf",     col_black, "-l", "0", NULL};
 
 // Spawn terminal
 static const char *termcmd[] = {"alacritty", NULL};
-
-/* Launch Emacs */
-static const char *emacsclientcmd[] = {"emacsclient", "-c", "-a", "emacs",
-                                       NULL};
 
 /* Launch Mercury browser */
 static const char *mercurycmd[] = {"mercury-browser", NULL};
@@ -130,7 +128,7 @@ static const char *rofiruncmd[] = {
     "-show",
     "run",
     "-theme",
-    "~/.config/rofi/launchers/type-1/style-10.rasi",
+    "~/.config/rofi/launchers/type-4/style-10.rasi",
     NULL};
 // Run desktop menu
 static const char *rofidruncmd[] = {
@@ -138,7 +136,7 @@ static const char *rofidruncmd[] = {
     "-show",
     "drun",
     "-theme",
-    "~/.config/rofi/launchers/type-2/style-14.rasi",
+    "~/.config/rofi/launchers/type-3/style-3.rasi",
     NULL};
 // Run calculator
 static const char *roficalccmd[] = {
@@ -146,7 +144,7 @@ static const char *roficalccmd[] = {
     "-show",
     "calc",
     "-theme",
-    "~/.config/rofi/launchers/type-1/style-9.rasi",
+    "~/.config/rofi/launchers/type-1/style-5.rasi",
     NULL};
 // Run file browser
 static const char *rofifilescmd[] = {
@@ -154,7 +152,7 @@ static const char *rofifilescmd[] = {
     "-show",
     "filebrowser",
     "-theme",
-    "~/.config/rofi/launchers/type-1/style-4.rasi",
+    "~/.config/rofi/launchers/type-4/style-4.rasi",
     NULL};
 // Run emoji menu
 static const char *rofiemojicmd[] = {
@@ -162,13 +160,13 @@ static const char *rofiemojicmd[] = {
     "-show",
     "emoji",
     "-theme",
-    "~/.config/rofi/launchers/type-1/style-3.rasi",
+    "~/.config/rofi/launchers/type-4/style-8.rasi",
     NULL};
 // Run wifi menu
 static const char *rofiwificmd[] = {"rofi-wifi", NULL};
 // Run power menu
 static const char *rofipowercmd[] = {
-    "/home/darth/.config/rofi/powermenu/type-1/powermenu.sh", NULL};
+    "/home/darth/.config/rofi/powermenu/type-3/powermenu.sh", NULL};
 
 /* Volume control */
 
@@ -325,6 +323,7 @@ static Keychord *keychords[] = {
                 TAGKEYS(XK_9, 8)
 
         /* Custom Keychords */
+    &((Keychord){1, {{MODKEY, XK_p}}, spawn, {.v = dmenucmd}}),
 
         /* Apps -> super + a */
         &
