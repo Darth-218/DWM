@@ -109,7 +109,7 @@ static const char *dmenucmd[] = {
 static const char *termcmd[] = {"alacritty", NULL};
 
 /* Launch Mercury browser */
-static const char *mercurycmd[] = {"mercury-browser", NULL};
+static const char *browsercmd[] = {"firefox", NULL};
 
 /* Launch Discord */
 static const char *discordcmd[] = {"discord", NULL};
@@ -122,14 +122,6 @@ static const char *okularcmd[] = {"okular", NULL};
 
 /* Rofi Commands */
 
-// Run commands
-static const char *rofiruncmd[] = {
-    "rofi",
-    "-show",
-    "run",
-    "-theme",
-    "~/.config/rofi/launchers/type-4/style-10.rasi",
-    NULL};
 // Run desktop menu
 static const char *rofidruncmd[] = {
     "rofi",
@@ -166,7 +158,7 @@ static const char *rofiemojicmd[] = {
 static const char *rofiwificmd[] = {"rofi-wifi", NULL};
 // Run power menu
 static const char *rofipowercmd[] = {
-    "/home/darth/.config/rofi/powermenu/type-3/powermenu.sh", NULL};
+    "/home/darth/.config/rofi/powermenu/type-2/powermenu.sh", NULL};
 
 /* Volume control */
 
@@ -330,7 +322,7 @@ static Keychord *keychords[] = {
         ((Keychord){2, {{MODKEY, XK_a}, {0, XK_h}}, spawn, {.v = superanoti}}),
 
     // "b" Mercury browser
-    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_b}}, spawn, {.v = mercurycmd}}),
+    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_b}}, spawn, {.v = browsercmd}}),
 
     // "d" discord
     &((Keychord){2, {{MODKEY, XK_a}, {0, XK_d}}, spawn, {.v = discordcmd}}),
@@ -346,9 +338,6 @@ static Keychord *keychords[] = {
 
     // "d" rofi drun menu
     &((Keychord){2, {{MODKEY, XK_r}, {0, XK_d}}, spawn, {.v = rofidruncmd}}),
-
-    // "r" rofi run menu
-    &((Keychord){2, {{MODKEY, XK_r}, {0, XK_r}}, spawn, {.v = rofiruncmd}}),
 
     // "c" rofi calculator
     &((Keychord){2, {{MODKEY, XK_r}, {0, XK_c}}, spawn, {.v = roficalccmd}}),
