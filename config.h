@@ -2,8 +2,8 @@
 
 /* appearance */
 static const unsigned int borderpx = 2; /* border pixel of windows */
-static const int startwithgaps = 0;     /* 1 means gaps are used by default */
-static const unsigned int gappx = 0; /* default gap between windows in pixels */
+static const int startwithgaps = 1;     /* 1 means gaps are used by default */
+static const unsigned int gappx = 10; /* default gap between windows in pixels */
 static const unsigned int snap = 32; /* snap pixel */
 static const int showbar = 1;        /* 0 means no bar */
 static const int topbar = 1;         /* 0 means bottom bar */
@@ -66,7 +66,8 @@ static const Layout layouts[] = {
     /* symbol     arrange function */
     {"| 󰝘 ", tile},   /* first entry is default */
     {"|  ", NULL},    /* no layout function means floating behavior */
-    {"|  ", monocle}, /* { "[@]",      spiral },
+    {"|  ", monocle}, 
+/* { "[@]",      spiral },
    { "[\\]",     dwindle },
    { "H[]",      deck },
    { "TTT",      bstack },
@@ -109,7 +110,7 @@ static const char *dmenucmd[] = {
 static const char *termcmd[] = {"alacritty", NULL};
 
 /* Launch Mercury browser */
-static const char *browsercmd[] = {"firefox", NULL};
+static const char *browsercmd[] = {"/usr/lib/floorp/floorp", NULL};
 
 /* Launch Discord */
 static const char *discordcmd[] = {"discord", NULL};
@@ -128,7 +129,7 @@ static const char *rofidruncmd[] = {
     "-show",
     "drun",
     "-theme",
-    "~/.config/rofi/launchers/type-3/style-3.rasi",
+    "~/.config/rofi/launchers/type-4/style-4.rasi",
     NULL};
 // Run calculator
 static const char *roficalccmd[] = {
@@ -136,7 +137,7 @@ static const char *roficalccmd[] = {
     "-show",
     "calc",
     "-theme",
-    "~/.config/rofi/launchers/type-1/style-5.rasi",
+    "~/.config/rofi/launchers/type-4/style-4.rasi",
     NULL};
 // Run file browser
 static const char *rofifilescmd[] = {
@@ -152,13 +153,15 @@ static const char *rofiemojicmd[] = {
     "-show",
     "emoji",
     "-theme",
-    "~/.config/rofi/launchers/type-4/style-8.rasi",
+    "~/.config/rofi/launchers/type-4/style-4.rasi",
     NULL};
 // Run wifi menu
 static const char *rofiwificmd[] = {"rofi-wifi", NULL};
 // Run power menu
 static const char *rofipowercmd[] = {
     "/home/darth/.config/rofi/powermenu/type-2/powermenu.sh", NULL};
+
+static const char *ulaunchercmd[] = {"ulauncher", NULL};
 
 /* Volume control */
 
@@ -369,10 +372,13 @@ static Keychord *keychords[] = {
     // "r" Selected region screenshot
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_r}}, spawn, {.v = regionss}}),
 
+    // ulauncher
+    &((Keychord){1, {{MODKEY, XK_u}}, spawn, {.v = ulaunchercmd}}),
+
     /* Show System Info */
-    &((Keychord){2, {{MODKEY, XK_u}, {0, XK_d}}, spawn, {.v = dateinfo}}),
-    &((Keychord){2, {{MODKEY, XK_u}, {0, XK_r}}, spawn, {.v = raminfo}}),
-    &((Keychord){2, {{MODKEY, XK_u}, {0, XK_u}}, spawn, {.v = upinfo}}),
+    /* &((Keychord){2, {{MODKEY, XK_u}, {0, XK_d}}, spawn, {.v = dateinfo}}), */
+    /* &((Keychord){2, {{MODKEY, XK_u}, {0, XK_r}}, spawn, {.v = raminfo}}), */
+    /* &((Keychord){2, {{MODKEY, XK_u}, {0, XK_u}}, spawn, {.v = upinfo}}), */
 
 };
 
