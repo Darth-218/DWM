@@ -30,8 +30,8 @@ static const char col_black[] = "#000000";
 static const char col_purple[] = "#ae81ff";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
-    [SchemeNorm] = {col_gray2, col_black, col_gray2},
-    [SchemeSel] = {col_purple, col_black, col_red},
+    [SchemeNorm] = {col_gray2, col_gray1, col_gray2},
+    [SchemeSel] = {col_white, col_gray1, col_white},
 };
 
 /* tagging */
@@ -159,7 +159,14 @@ static const char *rofiemojicmd[] = {
 static const char *rofiwificmd[] = {"rofi-wifi", NULL};
 // Run power menu
 static const char *rofipowercmd[] = {
-    "/home/darth/.config/rofi/powermenu/type-2/powermenu.sh", NULL};
+    "rofi",
+    "-show",
+    "power-menu",
+    "-modi",
+    "power-menu:~/.local/bin/rofi-power-menu",
+    "-theme",
+    "~/.config/rofi/launchers/type-4/style-4.rasi",
+    NULL};
 
 static const char *ulaunchercmd[] = {"ulauncher", NULL};
 
