@@ -1,37 +1,38 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 4; /* border pixel of windows */
 static const int startwithgaps = 1;     /* 1 means gaps are used by default */
-static const unsigned int gappx = 10; /* default gap between windows in pixels */
+static const unsigned int gappx = 0; /* default gap between windows in pixels */
 static const unsigned int snap = 32; /* snap pixel */
 static const int showbar = 1;        /* 0 means no bar */
-static const int topbar = 1;         /* 0 means bottom bar */
+static const int topbar = 0;         /* 0 means bottom bar */
 static const int horizpadbar = 4;    /* horizontal padding for statusbar */
-static const int vertpadbar = 10;    /* vertical padding for statusbar */
+static const int vertpadbar = 5;    /* vertical padding for statusbar */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 0;        /* horizontal padding of bar */
-static const char *fonts[] = {"JetbrainsMono Nerd Font:bold:size=10"};
-static const char dmenufont[] = "JetbrainsMono Nerd Font:bold:size=11";
+static const char *fonts[] = {"JetbrainsMono Nerd Font:bold:size=9"};
+static const char dmenufont[] = "JetbrainsMono Nerd Font:bold:size=9";
 static const char col_gray1[] = "#181616";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#282727";
 static const char col_gray4[] = "#eeeeee";
+static const char col_gray5[] = "#0f0f0f";
 static const char col_red[] = "#e46876";
 static const char col_softred[] = "#d9a594";
 static const char col_gold[] = "#c0a36e";
-static const char col_white[] = "#C3C6C4";
+static const char col_white[] = "#cacaca";
 static const char col_pink[] = "#FDD7FE";
 static const char col_orange[] = "#FF9E3B";
 static const char col_blue[] = "#59788e";
 static const char col_darkblue[] = "#0D0C16";
-static const char col_green[] = "#A7D129";
+static const char col_green[] = "#8aac8b";
 static const char col_black[] = "#000000";
-static const char col_purple[] = "#ae81ff";
+static const char col_purple[] = "#8f8aac";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
-    [SchemeNorm] = {col_gray2, col_gray1, col_gray2},
-    [SchemeSel] = {col_white, col_gray1, col_white},
+    [SchemeNorm] = {col_gray2, col_gray5, col_gray2},
+    [SchemeSel] = {col_white, col_gray5, col_purple},
 };
 
 /* tagging */
