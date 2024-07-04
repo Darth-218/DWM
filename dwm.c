@@ -917,9 +917,9 @@ void drawbar(Monitor *m) {
       drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
       drw_text(drw, x, 0, w - 2 * sp, bh, lrpad / 2, m->sel->name, 0);
       if (m->sel->isfloating)
-        drw_rect(drw, x + boxw, 0, w - (2 * boxw + 1), boxw,
-                 m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-                 urg & 1 << i);
+	drw_rect(drw, x + boxw, 0, w - ( 2 * boxw + 1), boxw,
+	    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+	    urg & 1 << i);
     } else {
       drw_setscheme(drw, scheme[SchemeNorm]);
       drw_rect(drw, x, 0, w - 2 * sp, bh, 1, 1);

@@ -32,13 +32,13 @@ static const char col_purple[] = "#8f8aac";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
     [SchemeNorm] = {col_gray2, col_gray5, col_gray2},
-    [SchemeSel] = {col_white, col_gray5, col_purple},
+    [SchemeSel] = {col_purple, col_gray5, col_softred},
 };
 
 /* tagging */
-static const char *tags[] = {"[1:  ]", "[2: 󰈹 ]", "[3: 󰇰 ]",
-                             "[4:  ]", "[5:  ]",  "[6: 󰎅 ]",
-                             "[7: X]",    "[8: Y]",     "[9: Z]"};
+static const char *tags[] = {"1", "2", "3",
+                             "4", "5", "6",
+                             "7", "8", "9"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -65,9 +65,9 @@ static const int lockfullscreen =
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    {"| 󰝘 ", tile},   /* first entry is default */
-    {"|  ", NULL},    /* no layout function means floating behavior */
-    {"|  ", monocle}, 
+    {" 󰝘 ", tile},   /* first entry is default */
+    {"  ", NULL},    /* no layout function means floating behavior */
+    {"  ", monocle}, 
 /* { "[@]",      spiral },
    { "[\\]",     dwindle },
    { "H[]",      deck },
@@ -108,19 +108,13 @@ static const char *dmenucmd[] = {
     "-nf",       col_white, "-sb",    col_red, "-sf",     col_black, "-l", "0", NULL};
 
 // Spawn terminal
-static const char *termcmd[] = {"alacritty", NULL};
+static const char *termcmd[] = {"kitty", NULL};
 
 /* Launch Mercury browser */
 static const char *browsercmd[] = {"/usr/lib/floorp/floorp", NULL};
 
-/* Launch Discord */
-static const char *discordcmd[] = {"discord", NULL};
-
 /* Launch Thunar */
-static const char *thunarcmd[] = {"thunar", NULL};
-
-/* Launch Okular */
-static const char *okularcmd[] = {"okular", NULL};
+static const char *dolphincmd[] = {"dolphin", NULL};
 
 /* Rofi Commands */
 
@@ -169,8 +163,6 @@ static const char *rofipowercmd[] = {
     "~/.config/rofi/launchers/type-4/style-4.rasi",
     NULL};
 
-static const char *ulaunchercmd[] = {"ulauncher", NULL};
-
 /* Volume control */
 
 // Volume up
@@ -201,12 +193,12 @@ static const char *regionss[] = {"flameshot", "gui", NULL};
 
 /* Info controls */
 
-// Show Ram
-static const char *raminfo[] = {"sys-not-ram.sh", NULL};
-// Show Date
-static const char *dateinfo[] = {"sys-not-cal.sh", NULL};
-// Show Uptime
-static const char *upinfo[] = {"sys-not-up.sh", NULL};
+/* // Show Ram */
+/* static const char *raminfo[] = {"sys-not-ram.sh", NULL}; */
+/* // Show Date */
+/* static const char *dateinfo[] = {"sys-not-cal.sh", NULL}; */
+/* // Show Uptime */
+/* static const char *upinfo[] = {"sys-not-up.sh", NULL}; */
 
 /* Keychord notifications */
 
@@ -335,14 +327,8 @@ static Keychord *keychords[] = {
     // "b" Mercury browser
     &((Keychord){2, {{MODKEY, XK_a}, {0, XK_b}}, spawn, {.v = browsercmd}}),
 
-    // "d" discord
-    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_d}}, spawn, {.v = discordcmd}}),
-
-    // "f" thunar
-    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_f}}, spawn, {.v = thunarcmd}}),
-
-    // "o" okular
-    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_o}}, spawn, {.v = okularcmd}}),
+    // "f" dolphin
+    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_f}}, spawn, {.v = dolphincmd}}),
 
     /* Rofi -> super + r */
     &((Keychord){2, {{MODKEY, XK_r}, {0, XK_h}}, spawn, {.v = superrnoti}}),
@@ -379,14 +365,6 @@ static Keychord *keychords[] = {
 
     // "r" Selected region screenshot
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_r}}, spawn, {.v = regionss}}),
-
-    // ulauncher
-    &((Keychord){1, {{MODKEY, XK_u}}, spawn, {.v = ulaunchercmd}}),
-
-    /* Show System Info */
-    /* &((Keychord){2, {{MODKEY, XK_u}, {0, XK_d}}, spawn, {.v = dateinfo}}), */
-    /* &((Keychord){2, {{MODKEY, XK_u}, {0, XK_r}}, spawn, {.v = raminfo}}), */
-    /* &((Keychord){2, {{MODKEY, XK_u}, {0, XK_u}}, spawn, {.v = upinfo}}), */
 
 };
 
