@@ -8,7 +8,7 @@ static const unsigned int snap = 32; /* snap pixel */
 static const int showbar = 1;        /* 0 means no bar */
 static const int topbar = 0;         /* 0 means bottom bar */
 static const int horizpadbar = 4;    /* horizontal padding for statusbar */
-static const int vertpadbar = 5;    /* vertical padding for statusbar */
+static const int vertpadbar = 5;     /* vertical padding for statusbar */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 0;        /* horizontal padding of bar */
 static const char *fonts[] = {"JetbrainsMono Nerd Font:bold:size=9"};
@@ -24,21 +24,19 @@ static const char col_gold[] = "#c0a36e";
 static const char col_white[] = "#cacaca";
 static const char col_pink[] = "#FDD7FE";
 static const char col_orange[] = "#FF9E3B";
-static const char col_blue[] = "#59788e";
+static const char col_blue[] = "#768a84";
 static const char col_darkblue[] = "#0D0C16";
 static const char col_green[] = "#8aac8b";
 static const char col_black[] = "#000000";
 static const char col_purple[] = "#8f8aac";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
-    [SchemeNorm] = {col_gray2, col_gray5, col_gray2},
-    [SchemeSel] = {col_purple, col_gray5, col_softred},
+    [SchemeNorm] = {col_gray4, col_gray5, col_gray2},
+    [SchemeSel] = {col_gray5, col_blue, col_blue},
 };
 
 /* tagging */
-static const char *tags[] = {"1", "2", "3",
-                             "4", "5", "6",
-                             "7", "8", "9"};
+static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -65,21 +63,21 @@ static const int lockfullscreen =
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    {" 󰝘 ", tile},   /* first entry is default */
-    {"  ", NULL},    /* no layout function means floating behavior */
-    {"  ", monocle}, 
-/* { "[@]",      spiral },
-   { "[\\]",     dwindle },
-   { "H[]",      deck },
-   { "TTT",      bstack },
-   { "===",      bstackhoriz },
-   { "HHH",      grid },
-   { "###",      nrowgrid },
-   { "---",      horizgrid },
-   { ":::",      gaplessgrid },
-   { "|M|",      centeredmaster },
-   { ">M>",      centeredfloatingmaster },
-   { NULL,       NULL }, */
+    {" 󰝘 ", tile}, /* first entry is default */
+    {"  ", NULL},  /* no layout function means floating behavior */
+    {"  ", monocle},
+    /* { "[@]",      spiral },
+       { "[\\]",     dwindle },
+       { "H[]",      deck },
+       { "TTT",      bstack },
+       { "===",      bstackhoriz },
+       { "HHH",      grid },
+       { "###",      nrowgrid },
+       { "---",      horizgrid },
+       { ":::",      gaplessgrid },
+       { "|M|",      centeredmaster },
+       { ">M>",      centeredfloatingmaster },
+       { NULL,       NULL }, */
 };
 
 /* key definitions */
@@ -104,8 +102,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
-    "dmenu_run", "-m",      dmenumon, "-fn",   dmenufont, "-nb",     col_black,
-    "-nf",       col_white, "-sb",    col_red, "-sf",     col_black, "-l", "0", NULL};
+    "dmenu_run", "-m",  dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf",
+    col_white,   "-sb", col_red,  "-sf", col_black, "-l",  "0",       NULL};
 
 // Spawn terminal
 static const char *termcmd[] = {"kitty", NULL};
@@ -318,11 +316,10 @@ static Keychord *keychords[] = {
                 TAGKEYS(XK_9, 8)
 
         /* Custom Keychords */
-    &((Keychord){1, {{MODKEY, XK_p}}, spawn, {.v = dmenucmd}}),
+        & ((Keychord){1, {{MODKEY, XK_p}}, spawn, {.v = dmenucmd}}),
 
-        /* Apps -> super + a */
-        &
-        ((Keychord){2, {{MODKEY, XK_a}, {0, XK_h}}, spawn, {.v = superanoti}}),
+    /* Apps -> super + a */
+    &((Keychord){2, {{MODKEY, XK_a}, {0, XK_h}}, spawn, {.v = superanoti}}),
 
     // "b" Mercury browser
     &((Keychord){2, {{MODKEY, XK_a}, {0, XK_b}}, spawn, {.v = browsercmd}}),
