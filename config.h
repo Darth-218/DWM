@@ -106,7 +106,7 @@ static const char *dmenucmd[] = {
     col_white,   "-sb", col_red,  "-sf", col_black, "-l",  "0",       NULL};
 
 // Spawn terminal
-static const char *termcmd[] = {"kitty", NULL};
+static const char *termcmd[] = {"wezterm", NULL};
 
 /* Launch Mercury browser */
 static const char *browsercmd[] = {"/usr/lib/floorp/floorp", NULL};
