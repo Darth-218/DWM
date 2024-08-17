@@ -31,8 +31,8 @@ static const char col_black[] = "#000000";
 static const char col_purple[] = "#8f8aac";
 static const char *colors[][3] = {
     /*               fg         bg          border   */
-    [SchemeNorm] = {col_gray4, col_gray5, col_gray2},
-    [SchemeSel] = {col_gray5, col_blue, col_blue},
+    [SchemeNorm] = {col_gray4, col_black, col_gray2},
+    [SchemeSel] = {col_black, col_blue, col_blue},
 };
 
 /* tagging */
@@ -161,6 +161,8 @@ static const char *rofipowercmd[] = {
     "~/.config/rofi/launchers/type-4/style-4.rasi",
     NULL};
 
+static const char *rofikeylayout[] = {"keylayout", NULL};
+
 /* Volume control */
 
 // Volume up
@@ -169,6 +171,8 @@ static const char *volup[] = {"amixer", "set", "Master", "5%+", NULL};
 static const char *voldown[] = {"amixer", "set", "Master", "5%-", NULL};
 // Mute
 static const char *volmute[] = {"amixer", "set", "Master", "toggle", NULL};
+
+static const char *volcont[] = {"pavocontrol", NULL};
 
 /* Brightness control */
 
@@ -257,7 +261,7 @@ static Keychord *keychords[] = {
     /* Fullscreen view */
     &((Keychord){1, {{MODKEY, XK_m}}, setlayout, {.v = &layouts[2]}}),
 
-    &((Keychord){1, {{MODKEY, XK_space}}, setlayout, {0}}),
+    /* &((Keychord){1, {{MODKEY, XK_space}}, setlayout, {0}}), */
     &((Keychord){1, {{MODKEY | ShiftMask, XK_space}}, togglefloating, {0}}),
 
     /* Tags control */
@@ -297,6 +301,8 @@ static Keychord *keychords[] = {
     &((Keychord){1, {{0, XF86XK_AudioLowerVolume}}, spawn, {.v = voldown}}),
     // Mute (media keys)
     &((Keychord){1, {{0, XF86XK_AudioMute}}, spawn, {.v = volmute}}),
+    // Volume mixer
+    &((Keychord){1, {{MODKEY, XK_v}}, spawn, {.v = volcont}}),
 
     /* Brightness controls */
     // Brightness up (media keys)
@@ -344,6 +350,9 @@ static Keychord *keychords[] = {
 
     // "w" rofi wifi menu
     &((Keychord){2, {{MODKEY, XK_r}, {0, XK_w}}, spawn, {.v = rofiwificmd}}),
+
+    // "l" rofi keyboard layouts menu
+    &((Keychord){1, {{MODKEY, XK_space}}, spawn, {.v = rofikeylayout}}),
 
     // "p" rofi power menu
     &((Keychord){2, {{MODKEY, XK_r}, {0, XK_p}}, spawn, {.v = rofipowercmd}}),
